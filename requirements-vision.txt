@@ -1,0 +1,15 @@
+# Stage 6: camera, hand tracking, and the hologram's local WebSocket/HTTP server.
+# Install with: pip install -r requirements.txt -r requirements-vision.txt
+#
+# These are kept separate from requirements.txt because mediapipe/opencv are
+# large and not every platform has a supported wheel — the rest of JARVIS
+# (voice, brain, tools, memory) runs fine without them. The actual rendering
+# happens in your browser via Three.js/WebGL (loaded from a CDN by
+# jarvis/vision/web/index.html), so no graphics package is needed here for it.
+
+opencv-python>=4.10.0
+# mediapipe>=0.10.30 targets the current "Tasks" API (mediapipe.tasks.python.vision) —
+# the older mediapipe.solutions.hands API jarvis/vision/hand_tracker.py used to use
+# was removed starting with 0.10.30, and no version has both it and recent-Python support.
+mediapipe>=0.10.30
+websockets>=15.0

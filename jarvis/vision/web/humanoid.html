@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zoro Humanoid</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #02020a;
+    height: 100%;
+  }
+  canvas { display: block; }
+
+  #topRight {
+    position: fixed;
+    top: 16px;
+    right: 18px;
+    text-align: right;
+    font-family: "Consolas", "Menlo", monospace;
+    pointer-events: none;
+    user-select: none;
+  }
+  #bootLabel {
+    color: #7fd8ff;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    opacity: 0.9;
+    text-shadow: 0 0 8px rgba(120, 200, 255, 0.8);
+  }
+  #statusLabel {
+    color: #cfe8ff;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    opacity: 0.9;
+    text-shadow: 0 0 8px rgba(140, 200, 255, 0.7);
+    display: none;
+  }
+
+  #hint {
+    position: fixed;
+    bottom: 10px;
+    left: 12px;
+    color: #5a8aa8;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: 11px;
+    opacity: 0.6;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  #agentDashboard {
+    position: fixed;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    max-width: 92vw;
+    pointer-events: none;
+    user-select: none;
+  }
+  .agentCard {
+    background: rgba(4, 10, 20, 0.6);
+    border: 1px solid rgba(120, 170, 220, 0.25);
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: 10px;
+    min-width: 120px;
+  }
+  .agentName {
+    color: #cfe8ff;
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+  }
+  .agentDetail {
+    opacity: 0.85;
+  }
+  .agentStatus-running .agentDetail { color: #e0c23a; }
+  .agentStatus-complete .agentDetail { color: #52e08a; }
+  .agentStatus-error .agentDetail { color: #ff5c5c; }
+  .agentStatus-idle .agentDetail { color: #7a8a9a; }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.185.1/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<div id="topRight">
+  <div id="bootLabel">ASSEMBLING... 0%</div>
+  <div id="statusLabel">CONNECTING...</div>
+</div>
+<div id="hint">drag to rotate &middot; scroll to zoom</div>
+<div id="agentDashboard"></div>
+<script type="module" src="humanoid.js"></script>
+</body>
+</html>

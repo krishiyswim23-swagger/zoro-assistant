@@ -1,0 +1,17 @@
+google-genai>=1.0.0
+python-dotenv>=1.0.1
+
+# Stage 2 voice stack (optional — text mode works without these)
+SpeechRecognition>=3.10.4
+sounddevice>=0.4.7
+numpy>=1.26.4
+pyttsx3>=2.90
+
+# Stage 4 tools: web research + document reading
+requests>=2.32.0
+beautifulsoup4>=4.12.3
+pypdf>=4.3.0
+python-docx>=1.1.2
+
+# Windows-only voice/system helpers (installed automatically on Windows)
+pywin32>=306; sys_platform == "win32"

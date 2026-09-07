@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zoro Hologram</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #02020a;
+    height: 100%;
+  }
+  canvas { display: block; }
+
+  #statusLabel {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #cfe8ff;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    font-weight: bold;
+    opacity: 0.9;
+    text-shadow: 0 0 8px rgba(140, 200, 255, 0.7);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  #hint {
+    position: fixed;
+    bottom: 10px;
+    left: 12px;
+    color: #5a8aa8;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: 11px;
+    opacity: 0.6;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  #cortexPanel {
+    position: fixed;
+    top: 16px;
+    right: 14px;
+    width: 190px;
+    background: rgba(4, 10, 20, 0.55);
+    border: 1px solid rgba(120, 170, 220, 0.25);
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: 10px;
+    color: #a9c8e0;
+    pointer-events: none;
+    user-select: none;
+  }
+  .cortexPanelTitle {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: #7fd8ff;
+    margin-bottom: 6px;
+    opacity: 0.9;
+  }
+  .cortexRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cortexDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    box-shadow: 0 0 4px currentColor;
+  }
+
+  #regionLabels {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+  .regionLabel {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-left: 2px solid;
+    padding-left: 6px;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: 9px;
+    line-height: 1.3;
+    color: #dce8f0;
+    white-space: pre;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
+    opacity: 0.85;
+  }
+
+  #agentDashboard {
+    position: fixed;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    max-width: 92vw;
+    pointer-events: none;
+    user-select: none;
+  }
+  .agentCard {
+    background: rgba(4, 10, 20, 0.6);
+    border: 1px solid rgba(120, 170, 220, 0.25);
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: 10px;
+    min-width: 120px;
+  }
+  .agentName {
+    color: #cfe8ff;
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+  }
+  .agentDetail {
+    opacity: 0.85;
+  }
+  .agentStatus-running .agentDetail { color: #e0c23a; }
+  .agentStatus-complete .agentDetail { color: #52e08a; }
+  .agentStatus-error .agentDetail { color: #ff5c5c; }
+  .agentStatus-idle .agentDetail { color: #7a8a9a; }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.185.1/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<div id="statusLabel">CONNECTING...</div>
+<div id="hint">drag to rotate &middot; scroll to zoom</div>
+<div id="cortexPanel">
+  <div class="cortexPanelTitle">NEUROLINK — CORTEX STATUS</div>
+  <div id="cortexList"></div>
+</div>
+<div id="regionLabels"></div>
+<div id="agentDashboard"></div>
+<script type="module" src="hologram.js"></script>
+</body>
+</html>
